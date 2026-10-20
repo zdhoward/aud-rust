@@ -17,11 +17,11 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 ## M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
 
 - [x] M1-1 `AudioFile`, selection policies, `fnmatch`, scanner (links, sort, non-UTF-8)
-- [ ] M1-2 `contracts.rs` + embedded schema + doc validation helper
+- [x] M1-2 `contracts.rs` + embedded schema + doc validation helper
 - [ ] M1-3 CLI `list` (+ error docs, exit codes, legacy count form decision)
 - [ ] M1-4 Test helpers: temp tree, `$ROOT` normalizer, schema validator
 - [ ] M1-5 Differential harness skeleton (`scripts/differential.*`), ≥ 10 `list` scenarios
-- [ ] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
+- [x] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
 - [ ] M1-X Exit: tag `v0.1.0`
 
 ## M2 — Safety core → [details](docs/plan/milestones/M2-safety-core.md)
