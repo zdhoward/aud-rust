@@ -1,0 +1,9 @@
+/target
+**/*.rs.bk
+.reference/
+.idea/
+.vscode/
+*.log
+.DS_Store
+# local scratch for differential runs and benchmarks
+/scratch/

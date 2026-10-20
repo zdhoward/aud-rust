@@ -1,0 +1,160 @@
+# Security review record
+
+The initial quick source audit reviewed commit `98a9a7c`, before implementation,
+across the local library, selection, adapters, operations, packaging and workflows.
+Independent reconnaissance, coverage criticism and source verification found no
+confirmed cross-principal vulnerability. A conditional lower-trust symlink
+processing lead remains dependent on the intended trust model and sandboxed
+validation. This is partial source coverage, not a security certification.
+
+A separate review of the new safety implementation identified same-file alias
+moves, skipped grouped outputs reaching later operations, and incomplete grouped
+failure/results handling. Those data-safety defects were fixed and covered by
+regression tests. Grouped results now include their planned source identities,
+and invalid archive member duplication fails before writing.
+
+Read-only exact-version dependency inventory and OSV checks initially matched
+advisories in ten development/toolchain packages. The repo-local development and
+build environment was refreshed. Independent rechecking of 60 third-party Python
+packages reported no advisory matches at 2026-10-14 20:48 UTC. This describes that
+environment at that time; it does not guarantee future resolutions or absence of
+unknown vulnerabilities. Runtime dependency declarations were not expanded.
+
+The machine's FFmpeg 8.0.1 binary was left unchanged. Upstream documents additional
+security fixes in 8.0.2 and 8.0.3; update to a maintained patched build or verify
+vendor backports before processing untrusted media. This is an external-tool
+maintenance limitation, not a confirmed aud exploit. See
+[FFmpeg security fixes](https://ffmpeg.org/security.html).
+
+No adversarial target execution was performed by the audit. The security audit
+skill requires: "If every control cannot be enforced, do not execute target code".
+No fully verified audit runner was established for this pass. Docker is available,
+but an isolated runner still needs an audited toolchain, empty allowlisted
+environment, network isolation, read-only mounts, scratch-only writes, and resource
+limits. Windows protected-input reading also prevented the validator CLI path;
+the official exported validators passed over trusted parent-owned in-memory data.
+Ordinary development regression tests and package smoke checks were separate from
+the adversarial audit.
+
+The direct-conversion slice received a focused source follow-up. Fixed argument
+arrays, input protocol/demuxer restrictions, staged verification, and owned-process
+cleanup were reviewed. Completion now rechecks deadline/cancellation/output limits;
+stream metadata is included in preservation/loss accounting. Focused regressions
+cover those fixes. This does not add adversarial native-execution evidence.
+
+The explicit chain follow-up reviewed numeric-only filter compilation, metadata
+parsing, and publication/results handling. Required effect fields are now checked
+explicitly during structural preflight, including caller-mutated operations.
+Timing-sensitive lossy fade-out measures decoded duration through the same bounded
+runner. Ordinary regressions cover these corrections; source review does not
+substitute for sandboxed adversarial decoder validation.
+
+The naming follow-up reviewed metadata-controlled paths, restricted format fields,
+portable components, tree conflicts, and results. It found a false-success alias
+case across distinct directories. In-place planning now verifies parent identity;
+naming also rejects distinct root aliases. Case/Unicode regressions cover the fix.
+No further concrete blocker was found in this source scope. No adversarial target
+execution was performed for this follow-up.
+
+The album packaging source follow-up checked archive traversal/portable aliases,
+input changes, copied sidecar references, bounded writes, conversion flags, and
+publication cleanup. Prepared packages now revalidate profile revisions, output
+settings, explicit consent, source coverage, and release metadata. Ordinary
+regressions cover these checks, cancellation, and preserved existing output.
+Artwork parsing uses a bounded JPEG subset followed by the existing restricted
+decoder. Checksums establish file integrity, not provenance or trust. This was
+a maintainer-agent source review; independent packaging review and sandboxed
+adversarial native execution remain outstanding.
+
+The CLI source follow-up reviewed config-to-operation dispatch, output escaping,
+path semantics, cancellation, and error/results handling. Config uses bounded
+JSON reads, rejects duplicate/non-finite values, and selects fixed operation
+constructors; it accepts no shell commands, dynamic imports, or raw filters.
+CLI paths are trusted local caller choices, not a containment boundary. Terminal
+path/tag/error strings are escaped. This focused source review does not provide
+independent security verification or adversarial native-execution evidence.
+
+## Independent follow-up, 2026-10-15
+
+Two independent source reviewers examined `918ce49`: one covered album delivery,
+archive members, stamps, consent/limits, and shared filesystem publication; the
+other covered CLI/config, naming/filename parsing, progress, JSON contracts, and
+facade integration. The maintainer agent separately reviewed native invocation,
+effects compilation, workflows, and stack state. This is focused source coverage,
+not a full re-audit of every legacy operation or adversarial decoder validation.
+
+The reviewers found no confirmed cross-principal vulnerability in those scopes.
+They did identify two correctness/data-policy defects, independently traced by
+the maintainer agent and fixed on `fix/review-follow-up`:
+
+- Every `pcm_*` codec was treated as lossless. Companded A-law/mu-law/VIDC now
+  require consent. WavPack can be hybrid/lossy, so its codec name is insufficient
+  too. The explicit allowlist now fails conservatively; package manifests
+  distinguish recognized lossy from unverified source derivatives. See
+  [FFmpeg's codec descriptors](https://github.com/FFmpeg/FFmpeg/blob/master/libavcodec/codec_desc.c).
+- Explicit zero-valued CLI output options were ignored for effects without a
+  final format, allowing unintended in-place work. Presence checks now reject
+  those options before execution. Config parsing also rejects exponent overflow.
+
+Both reviewers rechecked the corrections in source without executing target code.
+Separate ordinary development regressions passed 100 affected CLI/engine/media
+checks. These tests are not sandboxed adversarial audit evidence. New CodeQL PR
+coverage includes feature-branch bases; previously only the bottom stack layer
+received CodeQL analysis.
+
+An exact-version OSV batch query found zero matches among 65 installed third-party
+Python packages at 2026-10-15 11:47 UTC, including the newer JSON-schema tooling.
+No raw environment inventory or credentials are retained here. This is a dated
+inventory result, not a guarantee about other installations or future resolutions.
+The local native binary remains FFmpeg 8.0.1; the previously recorded patch gap
+is still open. No system binary or provider settings were changed.
+
+See [the stack checkpoint](REVIEW_CHECKPOINT.md) for release/port gates. Earlier
+author-only packaging/CLI notes above are historical; the focused independent
+source follow-up now covers those paths, with native/adversarial gaps unchanged.
+
+Remaining work includes sandboxed native validation, OS-enforced decoder memory
+limits, effects process limits/cancellation, stronger metadata/sidecar validation,
+and release/provider settings verification. Hostile concurrent directory/source
+replacement is outside the implemented filesystem guarantees. The future web UI
+requires its own exposure review before shipping.
+
+Detailed reports, the coverage ledger, and findings/validation records are retained
+in the maintainer's local audit archive. Raw environment inventories, machine-specific
+locations, and audit scratch data are not committed in this public repository.
+
+## Hosted development evidence, 2026-10-15
+
+After integration at `683286e`, CI and CodeQL passed. The first evidence run exposed
+report-upload and POSIX venv-selection defects in the workflow. The follow-up run
+[`38751474633`](https://github.com/zdhoward/aud/actions/runs/38751474633) retained
+reports and passed distribution integrity, clean installs, import observations,
+and selected installed regressions for both wheel and sdist. Semgrep reported zero
+findings/errors using the retained rule snapshot; Gitleaks reported zero findings
+for full history and the working tree; pip-audit reported zero advisories among
+42 resolved dependencies. These are dated development results, not release approval.
+
+Bandit 1.9.4 reported four low-severity items. Replaced the internal open-archive
+assertion with an explicit exception so optimized Python retains the check. The
+remaining three sites have specific inline exclusions, not disabled rule classes:
+
+| Site / rule | Source-grounded disposition | Recheck trigger |
+| --- | --- | --- |
+| `core/adapters/audio.py`, B311 | Random watermark intervals select audio placement only; no secrets, names, identities, or authorization depend on unpredictability. | Watermark randomness acquires a security purpose or the operation changes. |
+| `core/ffmpeg.py` import, B404 | Import enables the intentional native execution backend. Tool lookup is trusted local configuration, not media-controlled program selection. | Executable resolution, caller trust, or environment policy changes. |
+| `core/ffmpeg.py` Popen, B603 | Engine resolves native tools to absolute paths, uses fixed structured argument construction, `shell=False`, and an allowlisted environment. This does not protect against native decoder flaws or a compromised local toolchain. | Any runner caller, command/argument builder, input protocol, tool lookup, or environment policy changes. |
+
+Review owner: project maintainer. Recheck each site on the next candidate and on
+the triggers above; these dispositions expire at the next release review. Scanner
+exclusion does not accept a demonstrated vulnerability or close native isolation
+gaps. Archive assertion remediation and excluded-site scanning require a fresh run.
+
+An independent source-only reviewer rechecked these sites and all repository runner
+callers, confirming the dispositions without target execution. Follow-up run
+[`38752076905`](https://github.com/zdhoward/aud/actions/runs/38752076905) on `49251f1`
+passed both evidence jobs: Bandit had zero remaining findings/errors with exactly
+three excluded tests, the other scanners passed, and each installed wheel/sdist
+selection passed all 100 tests with no skips. Both fresh import observations passed.
+This closes the initial workflow defects and scanner triage for that development
+commit; native isolation, build reproducibility and final release approval remain
+open. Artifact evidence is retained locally outside version control and on the run.
