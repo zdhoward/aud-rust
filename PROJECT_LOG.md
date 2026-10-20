@@ -2,7 +2,7 @@
 
 Short audit trail: key actions, decisions, reasons. Newest first. Milestone entries include the metrics listed in `docs/plan/07-ai-workflow.md`.
 
-## 2026-10-20 — M0 bootstrap (PR #1, awaiting merge)
+## 2026-10-20 — M0 exit (v0.0.1)
 
 - Tool versions: rustc/cargo 1.99.1 (rustup 1.29.1, stable-x86_64-pc-windows-msvc, MSVC build tools already present), cargo-deny 0.20.2, cargo-audit 0.22.2, cargo-llvm-cov 0.9.1, FFmpeg/ffprobe 8.0.1.
 - **Decision:** `rust-version = 1.99` and `rust-toolchain.toml` = 1.99.1, per the plan rule "the stable you install in M0". The `msrv` CI job reads the value from `Cargo.toml`.
@@ -10,7 +10,7 @@ Short audit trail: key actions, decisions, reasons. Newest first. Milestone entr
 - **Decision:** branch protection requires `lint`, the three `test` jobs and `supply-chain`; PR required, 0 approvals (solo repo), admins not enforced, no force-push. `coverage` and `msrv` run but are not required yet.
 - Deviation: first CI run failed on ubuntu/macOS because the FFmpeg install script lacked the exec bit (committed from Windows). Fixed; recorded in the AI ledger.
 - Repo settings applied: description, topics, private vulnerability reporting.
-- Open at time of writing: merge PR #1, then CHANGELOG `0.0.1`, final milestone-exit log entry, tag `v0.0.1`, and CI green on `main`.
+- PR #1 merged after all CI jobs passed; CHANGELOG 0.0.1 and tag `v0.0.1` added in a follow-up PR. M0 complete.
 
 ## 2026-10-20 — Planning session
 
