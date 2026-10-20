@@ -2,6 +2,15 @@
 
 Short audit trail: key actions, decisions, reasons. Newest first. Milestone entries include the metrics listed in `docs/plan/07-ai-workflow.md`.
 
+## 2026-10-20 — M1 exit (v0.1.0)
+
+- Delivered: `aud list` end to end, `Dir` selection (extension/allow/deny/pattern), scanner, `fnmatchcase`-compatible glob, v1 envelope + embedded schema, legacy count form, differential harness (20 scenarios identical to Python 3.13.1 on Windows).
+- Metrics: 3 PRs (#4, #5 and this exit PR); ~1.4k Rust lines (src + tests) vs ~0.6k Python lines read (cli.py, aud.py selection half, selection/*, contracts, models); 51 tests; Python tests ported: test_dir_selection, test_dir_config, test_dir_api in full, list parts of test_cli and test_contracts (the rest of those files belong to later milestones, so their TODO boxes stay open).
+- Defects by layer: plan (2 wrong traps, caught by reading source + running Python), compiler/clippy (several lints), differential (JSON key order, my normalizer), CI (cargo-deny Zlib licence only visible on Linux/macOS; exec bit in M0), code-review (magic number, over-broad masking).
+- **Decisions:** legacy count form ported in M1 (spec promises it; 3 lines). Allow/deny regex stay library-only (Python CLI has no flag), covered by unit tests. Zlib added to the licence allow list. Case-collision scenario skips on case-insensitive filesystems. Windows sort is case-insensitive like `pathlib` (SG-4).
+- Deferred: Ctrl+C / exit 130 and `--output-bytes` default to M7 / M3; branch protection did not need changes.
+- Wall-clock: roughly one session.
+
 ## 2026-10-20 — M0 exit (v0.0.1)
 
 - Tool versions: rustc/cargo 1.99.1 (rustup 1.29.1, stable-x86_64-pc-windows-msvc, MSVC build tools already present), cargo-deny 0.20.2, cargo-audit 0.22.2, cargo-llvm-cov 0.9.1, FFmpeg/ffprobe 8.0.1.

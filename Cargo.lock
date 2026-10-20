@@ -92,7 +92,7 @@ dependencies = [
 
 [[package]]
 name = "aud-cli"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "assert_cmd",
  "aud-core",
@@ -105,7 +105,7 @@ dependencies = [
 
 [[package]]
 name = "aud-core"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "jsonschema",
  "regex",

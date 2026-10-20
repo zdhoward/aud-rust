@@ -3,7 +3,7 @@ resolver = "3"
 members = ["crates/aud-core", "crates/aud-cli"]
 
 [workspace.package]
-version = "0.0.1"
+version = "0.1.0"
 edition = "2024"
 rust-version = "1.99"
 license = "MIT"
@@ -11,7 +11,7 @@ repository = "https://github.com/zdhoward/aud-rust"
 authors = ["Zach Howard"]
 
 [workspace.dependencies]
-aud-core = { path = "crates/aud-core", version = "0.0.1" }
+aud-core = { path = "crates/aud-core", version = "0.1.0" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
