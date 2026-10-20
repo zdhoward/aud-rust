@@ -39,7 +39,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Install FFmpeg
         shell: bash
-        run: scripts/ci-install-ffmpeg.sh
+        run: bash scripts/ci-install-ffmpeg.sh
       - run: cargo test --workspace
 
   coverage:
