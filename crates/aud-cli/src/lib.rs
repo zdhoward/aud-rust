@@ -80,13 +80,13 @@ pub fn run(args: &[OsString], out: &mut dyn Write, err: &mut dyn Write) -> i32 {
             0
         }
         Err(e) => {
-            let doc = error_data(&e.to_string(), 2);
+            let doc = error_data(&e.to_string(), USAGE_EXIT);
             if args.json {
                 emit(&doc, true, args.json_version, "error", out);
             } else {
                 let _ = writeln!(err, "{}", to_ascii_json(&doc, true));
             }
-            2
+            USAGE_EXIT
         }
     }
 }
@@ -172,6 +172,8 @@ fn usage_error(message: &str, json: bool, out: &mut dyn Write, err: &mut dyn Wri
 /// is compact; otherwise indented. Mirrors Python `_emit`.
 fn emit(data: &Value, machine: bool, version: Option<u8>, kind: &str, out: &mut dyn Write) {
     let doc = match version {
+        // `kind` is always one of our own literals and `data` always an object, so
+        // `json_document` cannot fail here; the fallback only avoids a panic path.
         Some(_) => json_document(kind, data.clone()).unwrap_or_else(|_| data.clone()),
         None => data.clone(),
     };

@@ -50,6 +50,11 @@ def mkdir(root, name):
     (root / name).mkdir()
 
 
+def case_collision(root):
+    touch(root, "a.wav", "A.wav", "b.wav")
+    return len([p for p in root.iterdir() if p.name.lower() == "a.wav"]) == 2
+
+
 def symlink(root):
     touch(root, "real.wav")
     try:
@@ -82,6 +87,8 @@ def scenarios():
              args=lambda r: ["list", str(r), "--extensions", "wav", *v1]),
         dict(id="empty-dir", files=[], args=lambda r: ["list", str(r), "--extensions", "wav", *v1]),
         dict(id="subdirectory-ignored", files=["y.wav"], setup=lambda r: mkdir(r, "x.wav"),
+             args=lambda r: ["list", str(r), "--extensions", "wav", *v1]),
+        dict(id="case-collision", files=[], setup=case_collision,
              args=lambda r: ["list", str(r), "--extensions", "wav", *v1]),
         dict(id="symlink-skipped", files=[], setup=symlink,
              args=lambda r: ["list", str(r), "--extensions", "wav", *v1]),
@@ -156,7 +163,7 @@ def mask_error_text(result):
         if isinstance(payload, dict) and "error" in payload:
             payload["error"] = "<masked>"
     for key in ("stdout", "stderr"):
-        if key in result and "aud:" in result[key]:
+        if key in result and result[key].startswith("aud: "):
             result[key] = "<masked usage message>"
 
 
@@ -179,7 +186,7 @@ def run_scenario(scenario, reference, rust):
                 argv = [str(rust), *argv_tail]
                 cwd = root.parent
             results[side] = observe(argv, cwd, env, root, scenario)
-    if scenario.get("mask_error", True):
+    if scenario.get("mask_error", False):
         for side in results.values():
             mask_error_text(side)
     return ("PASS" if results["python"] == results["rust"] else "FAIL"), results
