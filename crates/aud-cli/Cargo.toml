@@ -1,0 +1,27 @@
+[package]
+name = "aud-cli"
+description = "Command-line interface for aud, a safety-first batch audio processor."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "aud"
+path = "src/main.rs"
+
+[dependencies]
+aud-core.workspace = true
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }

@@ -2,7 +2,10 @@
 
 A Rust rewrite of [`aud`](https://github.com/zdhoward/aud), a safety-first batch audio processor, built with AI assistance and verified against the original.
 
-> **Status: planning complete, implementation not started.** See [ROADMAP.md](ROADMAP.md) and [TODO.md](TODO.md). Nothing below describes shipped behavior yet.
+[![CI](https://github.com/zdhoward/aud-rust/actions/workflows/ci.yml/badge.svg)](https://github.com/zdhoward/aud-rust/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+> **Status: M0 complete (bootstrap).** The workspace, CI on Linux/macOS/Windows and repo hygiene are in place; `aud --version` is the only working command. See [ROADMAP.md](ROADMAP.md) and [TODO.md](TODO.md). Nothing below describes shipped behavior yet.
 
 ## What this project demonstrates
 

@@ -4,14 +4,14 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 
 ## Now: M0 — Bootstrap → [details](docs/plan/milestones/M0-bootstrap.md)
 
-- [ ] M0-1 Install Rust toolchain + components; record versions in PROJECT_LOG
-- [ ] M0-2 Install `cargo-deny`, `cargo-audit`, `cargo-llvm-cov`
-- [ ] M0-3 Workspace: root `Cargo.toml`, `aud-core`, `aud-cli`, `rust-toolchain.toml`, shared lints
-- [ ] M0-4 Smoke tests (`aud --version`), `forbid(unsafe_code)`
-- [ ] M0-5 CI: lint, test matrix (3 OS + FFmpeg), supply-chain, coverage, msrv; `deny.toml`
-- [ ] M0-6 Hygiene: dependabot, SECURITY.md, CONTRIBUTING.md, Rust-specific issue/PR templates
-- [ ] M0-7 GitHub: confirm `origin`, description/topics, branch protection, private vulnerability reporting
-- [ ] M0-8 README with real badges; verify `scripts/fetch-reference.ps1`
+- [x] M0-1 Install Rust toolchain + components; record versions in PROJECT_LOG
+- [x] M0-2 Install `cargo-deny`, `cargo-audit`, `cargo-llvm-cov`
+- [x] M0-3 Workspace: root `Cargo.toml`, `aud-core`, `aud-cli`, `rust-toolchain.toml`, shared lints
+- [x] M0-4 Smoke tests (`aud --version`), `forbid(unsafe_code)`
+- [x] M0-5 CI: lint, test matrix (3 OS + FFmpeg), supply-chain, coverage, msrv; `deny.toml`
+- [x] M0-6 Hygiene: dependabot, SECURITY.md, CONTRIBUTING.md, Rust-specific issue/PR templates
+- [x] M0-7 GitHub: confirm `origin`, description/topics, branch protection, private vulnerability reporting
+- [x] M0-8 README with real badges; verify `scripts/fetch-reference.ps1`
 - [ ] M0-X Exit: CHANGELOG 0.0.1, PROJECT_LOG, tag `v0.0.1`
 
 ## M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
