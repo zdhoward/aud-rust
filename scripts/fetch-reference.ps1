@@ -1,5 +1,5 @@
 # Clone the pinned Python reference implementation into .reference/aud (gitignored).
-# Usage: pwsh scripts/fetch-reference.ps1
+# Usage: powershell -File scripts/fetch-reference.ps1   (or pwsh; works on Windows PowerShell 5.1)
 $ErrorActionPreference = 'Stop'
 $Pin = 'bb01db7cad9795f37a3fbe14cc8c59da4d9b8eb0'   # keep in sync with spec/README.md
 $Root = Split-Path -Parent $PSScriptRoot
