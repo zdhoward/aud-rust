@@ -35,3 +35,19 @@ The differential suite's `allowed-diffs.toml` may reference only entries listed 
 - Python behavior: Windows uses exclusive `os.rename`; POSIX uses a hard link.
 - Rust behavior: hard link on every platform ([ADR-0003](../adr/0003-no-unsafe-exclusive-publish.md)). Filesystems without hard links fail safely instead of falling back.
 - Decision: diverge. Keeps `forbid(unsafe_code)`. Non-NTFS Windows targets lose support; revisit if a user hits it.
+
+## SG-4: Scan order is case-insensitive on Windows (trap T-2 was incomplete)
+- Found: 2026-10-20, M1, AI (confirmed by running Python 3.13.1 on Windows)
+- Python behavior: `sorted(Path)` compares `PurePath` normalized parts. On Windows these are lowercased, so `A.wav, a2.wav, b.wav, Z.wav`; on POSIX plain code point order. Non-BMP names sort by code point, not UTF-16.
+- Spec says: "Files are processed in sorted order" (`spec/ARCHITECTURE.md`), no detail.
+- Rust behavior: scanner sorts by `to_lowercase()` on Windows and by code point elsewhere, with the raw name as tie-break.
+- Decision: match, per platform. The differential suite runs Python and Rust on the same OS.
+- Evidence: `scanner::tests::windows_sort_ignores_case_like_pathlib`, `posix_sort_is_case_sensitive`, differential scenario `sort-order`.
+
+## SG-5: `--pattern` is case-sensitive on every OS (trap T-16 was wrong)
+- Found: 2026-10-20, M1, AI
+- Python behavior: `Dir.update` calls `fnmatch.fnmatchcase`, which skips `os.path.normcase`. Matching is case-sensitive on Windows too.
+- Spec says: silent ("filename glob").
+- Rust behavior: case-sensitive everywhere; no Windows case folding.
+- Decision: match.
+- Evidence: `dir::tests::pattern_is_case_sensitive_everywhere`; `fnmatch::tests::matches_python_fnmatchcase` (expected values from Python 3.13.1).
