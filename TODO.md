@@ -14,7 +14,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 - [x] M0-8 README with real badges; verify `scripts/fetch-reference.ps1`
 - [x] M0-X Exit: CHANGELOG 0.0.1, PROJECT_LOG, tag `v0.0.1`
 
-## M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
+## Done: M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
 
 - [x] M1-1 `AudioFile`, selection policies, `fnmatch`, scanner (links, sort, non-UTF-8)
 - [x] M1-2 `contracts.rs` + embedded schema + doc validation helper
@@ -22,7 +22,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 - [x] M1-4 Test helpers: temp tree, `$ROOT` normalizer, schema validator
 - [x] M1-5 Differential harness skeleton (`scripts/differential.*`), ≥ 10 `list` scenarios
 - [x] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
-- [ ] M1-X Exit: tag `v0.1.0`
+- [x] M1-X Exit: tag `v0.1.0`
 
 ## M2 — Safety core → [details](docs/plan/milestones/M2-safety-core.md)
 

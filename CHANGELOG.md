@@ -4,6 +4,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-20
+
+### Added
+
+- `aud list` with `--extensions`, `--pattern`, `--json`, `--json-version 1`; JSON v1 documents (schema-validated), error documents and exit codes 0/2; legacy `aud DIRECTORY` count form.
+- `aud-core`: selection policy, single-directory scanner, `fnmatchcase`-compatible glob, `Dir` facade, v1 envelope with embedded schema.
+- `scripts/differential.py` (+ `.ps1`/`.sh`): Python-vs-Rust comparison, 20 scenarios identical.
+
+### Changed
+
+- Plan traps T-2 and T-16 corrected (SG-4, SG-5); SG-6 records usage-message wording divergence.
+
 ## [0.0.1] - 2026-10-20
 
 ### Added

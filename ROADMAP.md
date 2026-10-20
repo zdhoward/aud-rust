@@ -5,7 +5,7 @@ Detailed milestone plans: [docs/plan/](docs/plan/README.md). Task-level status: 
 | Version | Milestone | Status |
 | --- | --- | --- |
 | 0.0.1 | M0 Bootstrap | done (v0.0.1) |
-| 0.1.0 | M1 Tracer bullet (`list`) | not started |
+| 0.1.0 | M1 Tracer bullet (`list`) | done (v0.1.0) |
 | 0.2.0 | M2 Safety core | not started |
 | 0.3.0 | M3 Media engine (`inspect`, `convert`, `export`) | not started |
 | 0.4.0 | M4 Audio chain (`effects`) | not started |
