@@ -18,9 +18,9 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 
 - [x] M1-1 `AudioFile`, selection policies, `fnmatch`, scanner (links, sort, non-UTF-8)
 - [x] M1-2 `contracts.rs` + embedded schema + doc validation helper
-- [ ] M1-3 CLI `list` (+ error docs, exit codes, legacy count form decision)
-- [ ] M1-4 Test helpers: temp tree, `$ROOT` normalizer, schema validator
-- [ ] M1-5 Differential harness skeleton (`scripts/differential.*`), ≥ 10 `list` scenarios
+- [x] M1-3 CLI `list` (+ error docs, exit codes, legacy count form decision)
+- [x] M1-4 Test helpers: temp tree, `$ROOT` normalizer, schema validator
+- [x] M1-5 Differential harness skeleton (`scripts/differential.*`), ≥ 10 `list` scenarios
 - [x] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
 - [ ] M1-X Exit: tag `v0.1.0`
 
@@ -59,7 +59,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 ## M7 — CLI parity → [details](docs/plan/milestones/M7-cli-parity.md)
 
 - [ ] M7-1 CLI audit · [ ] M7-2 Config hardening · [ ] M7-3 Progress · [ ] M7-4 Exit codes + Ctrl+C · [ ] M7-5 JSON error docs
-- [ ] M7-6 Legacy count form · [ ] M7-7 Optional extras (completions, verbose) · [ ] M7-8 Library docs
+- [ ] M7-6 Legacy count form (ported in M1; re-audit only) · [ ] M7-7 Optional extras (completions, verbose) · [ ] M7-8 Library docs
 - [ ] M7-X Exit: tag `v0.7.0`
 
 ## M8 — Differential + hardening → [details](docs/plan/milestones/M8-differential-hardening.md)

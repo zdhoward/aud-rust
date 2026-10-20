@@ -51,3 +51,11 @@ The differential suite's `allowed-diffs.toml` may reference only entries listed 
 - Rust behavior: case-sensitive everywhere; no Windows case folding.
 - Decision: match.
 - Evidence: `dir::tests::pattern_is_case_sensitive_everywhere`; `fnmatch::tests::matches_python_fnmatchcase` (expected values from Python 3.13.1).
+
+## SG-6: Usage-error wording and the legacy count form
+- Found: 2026-10-20, M1, AI
+- Python behavior: usage errors carry `argparse` messages. `aud DIRECTORY` (one non-option, non-command argument) prints `Found N files` using the default empty selection (always 0), exit 0; a missing directory prints `Directory does not exist: "<path>"` on stdout, exit 1; no arguments prints a usage line, exit 1.
+- Spec says: `spec/CLI.md` keeps the count form "available".
+- Rust behavior: clap generates the usage messages, so message text differs (exit code 2 and document shape match). The legacy form is ported exactly, because it is three lines and the spec promises it. `--help` text is clap's.
+- Decision: match behavior and shapes, diverge on `argparse` wording. The differential harness masks `error` text only in scenarios that set `mask_error` (usage errors); all other error text is compared after `$ROOT` normalization.
+- Evidence: `tests/list.rs::legacy_count_form`, differential scenarios `legacy-count`, `legacy-missing`, `usage-error-json`, `version-without-json`.
