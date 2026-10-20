@@ -2,6 +2,17 @@
 
 #![forbid(unsafe_code)]
 
+pub mod contracts;
+pub mod dir;
+pub mod error;
+pub mod model;
+pub mod safety;
+pub mod selection;
+
+pub use dir::{Dir, DirOptions};
+pub use error::AudError;
+pub use model::AudioFile;
+
 /// Version of this library, taken from the workspace manifest.
 #[must_use]
 pub const fn version() -> &'static str {

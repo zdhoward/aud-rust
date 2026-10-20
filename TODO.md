@@ -16,12 +16,12 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 
 ## M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
 
-- [ ] M1-1 `AudioFile`, selection policies, `fnmatch`, scanner (links, sort, non-UTF-8)
-- [ ] M1-2 `contracts.rs` + embedded schema + doc validation helper
+- [x] M1-1 `AudioFile`, selection policies, `fnmatch`, scanner (links, sort, non-UTF-8)
+- [x] M1-2 `contracts.rs` + embedded schema + doc validation helper
 - [ ] M1-3 CLI `list` (+ error docs, exit codes, legacy count form decision)
 - [ ] M1-4 Test helpers: temp tree, `$ROOT` normalizer, schema validator
 - [ ] M1-5 Differential harness skeleton (`scripts/differential.*`), ≥ 10 `list` scenarios
-- [ ] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
+- [x] M1-6 Schema-validate `progress`/`error` fixtures in `cases.json`
 - [ ] M1-X Exit: tag `v0.1.0`
 
 ## M2 — Safety core → [details](docs/plan/milestones/M2-safety-core.md)
@@ -77,7 +77,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 
 Tick when every behavior in the file is ported or excluded. Mapping in `docs/plan/03-port-map.md`.
 
-- [ ] test_dir_selection · [ ] test_dir_config · [ ] test_dir_api · [ ] test_contracts (M1)
+- [x] test_dir_selection · [x] test_dir_config · [x] test_dir_api · [ ] test_contracts (M1)
 - [ ] test_safety · [ ] test_plan · [ ] test_execution · [ ] test_names · [ ] test_filesystem_ops · [ ] test_adapters · [ ] test_exceptions · [ ] test_progress (M2)
 - [ ] test_ffmpeg_engine · [ ] test_conversion · [ ] test_export · [ ] test_media_conformance (M3, M4, M6 parts)
 - [ ] test_audio_chain (M4) · [ ] test_naming_profiles · [ ] test_filename_parsing (M5) · [ ] test_album_packaging (M6) · [ ] test_cli (M1→M7)
