@@ -2,7 +2,7 @@
 
 Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). Tick items in the same commit that completes them. Milestone detail lives in `docs/plan/milestones/`.
 
-## Now: M0 — Bootstrap → [details](docs/plan/milestones/M0-bootstrap.md)
+## Done: M0 — Bootstrap → [details](docs/plan/milestones/M0-bootstrap.md)
 
 - [x] M0-1 Install Rust toolchain + components; record versions in PROJECT_LOG
 - [x] M0-2 Install `cargo-deny`, `cargo-audit`, `cargo-llvm-cov`
@@ -12,7 +12,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 - [x] M0-6 Hygiene: dependabot, SECURITY.md, CONTRIBUTING.md, Rust-specific issue/PR templates
 - [x] M0-7 GitHub: confirm `origin`, description/topics, branch protection, private vulnerability reporting
 - [x] M0-8 README with real badges; verify `scripts/fetch-reference.ps1`
-- [ ] M0-X Exit: CHANGELOG 0.0.1, PROJECT_LOG, tag `v0.0.1`
+- [x] M0-X Exit: CHANGELOG 0.0.1, PROJECT_LOG, tag `v0.0.1`
 
 ## M1 — Tracer bullet → [details](docs/plan/milestones/M1-tracer-bullet.md)
 
