@@ -8,9 +8,9 @@ Legend: `[ ]` open · `[x]` done · `[~]` consciously excluded (reason inline). 
 - [x] M0-2 Install `cargo-deny`, `cargo-audit`, `cargo-llvm-cov`
 - [x] M0-3 Workspace: root `Cargo.toml`, `aud-core`, `aud-cli`, `rust-toolchain.toml`, shared lints
 - [x] M0-4 Smoke tests (`aud --version`), `forbid(unsafe_code)`
-- [ ] M0-5 CI: lint, test matrix (3 OS + FFmpeg), supply-chain, coverage, msrv; `deny.toml`
+- [x] M0-5 CI: lint, test matrix (3 OS + FFmpeg), supply-chain, coverage, msrv; `deny.toml`
 - [x] M0-6 Hygiene: dependabot, SECURITY.md, CONTRIBUTING.md, Rust-specific issue/PR templates
-- [ ] M0-7 GitHub: confirm `origin`, description/topics, branch protection, private vulnerability reporting
+- [x] M0-7 GitHub: confirm `origin`, description/topics, branch protection, private vulnerability reporting
 - [x] M0-8 README with real badges; verify `scripts/fetch-reference.ps1`
 - [ ] M0-X Exit: CHANGELOG 0.0.1, PROJECT_LOG, tag `v0.0.1`
 
